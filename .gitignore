@@ -1,0 +1,34 @@
+# Application
+/.env
+/config/**/*-local.json
+/dist/
+/docker-compose.local.yml
+/migrations/datasource.json
+/static/
+/test/results.xml
+/test/static/
+**/tmp/
+!/config/**/*.sample.json
+
+# OS
+/**/.DS_Store
+
+# Logs
+/logs/
+
+# NPM and Node.js
+/node_modules/
+/npm-debug.log
+
+# IDEs and editors
+/**/*.iml
+/**/*.launch
+/**/*.orig
+/**/*.sublime-workspace
+/.c9/
+/.classpath
+/.idea/
+/.project
+/.settings/
+/.vs/
+/.vscode/

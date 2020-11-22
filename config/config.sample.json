@@ -1,0 +1,63 @@
+{
+    "common": {
+        "host": "127.0.0.1",
+        "httpPort": 5000,
+        "pathPrefix": "",
+        "url": "http://localhost:9000",
+        "assetsDirectory": "./assets",
+        "storageDirectory": "./static",
+        "tmpDirectory": "./tmp",
+        "cacheResponse": false,
+        "enableDocs": false,
+        "userSettings": {
+            "cookie": {"lifetime": 86400},
+            "password": {
+                "requirements": {"minimalLength": 8, "hasUppersAndLowers": true, "hasNumbers": true},
+                "reset": {"lifetime": 86400}
+            },
+            "redirect": {"lifetime": 10}
+        },
+        "uploadSettings": {
+            "maxSize": 15728640,
+            "maxResolution": 25,
+            "maxNameLength": 200,
+            "imageExtensions": ["png", "jpg", "jpeg"],
+            "thumbnail": {"maxHeight": 150, "maxWidth": 300, "prefix": "thumb"}
+        },
+        "session": {"lifetime": 1200},
+        "logLevel": "debug",
+        "cleanDBsOnStart": false,
+        "jwtLifeTime": 2592000,
+        "jwtSecret": "jwt_secret"
+    },
+    "dev": {
+        "host": "127.0.0.1",
+        "cleanDBsOnStart": false,
+        "logLevel": "silly",
+        "jwtSecret": "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918",
+        "enableDocs": true
+    },
+    "test": {
+        "host": "127.0.0.1",
+        "httpPort": 3003,
+        "storageDirectory": "./test/static",
+        "cleanDBsOnStart": true,
+        "logLevel": "silly",
+        "userSettings": {
+            "cookie": {"lifetime": 86400},
+            "password": {
+                "requirements": {"minimalLength": 8, "hasUppersAndLowers": true, "hasNumbers": true},
+                "reset": {"lifetime": 0.5}
+            },
+            "redirect": {"lifetime": 0.2}
+        },
+        "uploadSettings": {
+            "maxSize": 1024,
+            "maxResolution": 0.01,
+            "maxNameLength": 30,
+            "imageExtensions": ["png", "jpg", "jpeg"],
+            "thumbnail": {"maxHeight": 20, "maxWidth": 20, "prefix": "thumb"}
+        },
+        "jwtSecret": "7352cd0079037a3d3fa68cba9ad836a34d40e13db7172c647ef2f56cc696d0bf"
+    }
+}

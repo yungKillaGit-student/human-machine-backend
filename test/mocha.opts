@@ -1,0 +1,6 @@
+--require ts-node/register
+--exit
+--timeout 0
+test/**/*.e2e-test.ts
+test/**/*.spec.ts
+--project tsconfig.test.json
