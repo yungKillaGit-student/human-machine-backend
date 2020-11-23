@@ -6,7 +6,6 @@ import {
     Crud, CrudController, CrudOptions, CrudRequest, Override, ParsedRequest,
 } from '@nestjsx/crud';
 import {plainToClass} from 'class-transformer';
-import {parse} from 'cookie';
 
 import {User} from '../../../entities';
 import {ErrorMessages} from '../../../utils';
@@ -48,7 +47,7 @@ export class UserController implements CrudController<User> {
     @HttpCode(HttpStatus.ACCEPTED)
     @Post('signin')
     async signIn(@Body() userSigninDto: UserSigninDto, @Res() res, @Req() req): Promise<User> {
-        const {token, id: userId} = await this.service.getOneWithPasswordValidation(userSigninDto);
+        const {id: userId} = await this.service.getOneWithPasswordValidation(userSigninDto);
 
         const user = await this.service.signIn(userId);
 
@@ -70,12 +69,6 @@ export class UserController implements CrudController<User> {
         res.header('Set-Cookie', [
             'token=""; Max-Age=0; Path=/; HttpOnly; SameSite=Lax',
             'tokenExpiredDate=""; Max-Age=0; Path=/; SameSite=Lax;']);
-
-        const cookies: any = parse(req.headers['cookie'] || '');
-        const {token = ''} = cookies;
-        if (token) {
-            // await this.sessionService.removeSessionInfo(user.id);
-        }
 
         res.send(user);
         return plainToClass(User, user);

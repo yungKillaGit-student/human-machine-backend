@@ -4,7 +4,7 @@ import {CrudOptions, CrudRequest, GetManyDefaultResponse} from '@nestjsx/crud/li
 import {DeepPartial} from 'typeorm';
 
 import {Temporal} from '../../../entities';
-import {GenericService} from '../services/generic';
+import {GenericService} from '../services';
 
 export const genericCrudSettings: CrudOptions = {
     model: {type: Temporal},
@@ -14,7 +14,6 @@ export const genericCrudSettings: CrudOptions = {
         updateOneBase: {allowParamsOverride: true},
     },
     query: {
-        join: {regionDECT: {eager: false}, regionBluetooth: {eager: false}},
         sort: [{field: 'createdAt', order: 'ASC'}],
         maxLimit: 250,
         alwaysPaginate: true,
