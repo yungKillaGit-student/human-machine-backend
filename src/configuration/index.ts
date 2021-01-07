@@ -3,7 +3,7 @@ import {join} from 'path';
 import * as dotenv from 'dotenv';
 import {merge} from 'lodash';
 
-import {validate} from '../utils';
+import {validate} from '../utils/utils';
 
 import {DataSource} from './datasources';
 import {configs, env, logLevels, rootPath} from './server';
