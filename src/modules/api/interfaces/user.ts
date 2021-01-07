@@ -12,21 +12,41 @@ export class UserSigninDto {
 }
 
 export class UserCreateDto extends UserSigninDto {
-    @ApiProperty({description: 'Name'})
+    @ApiProperty({description: 'First Name'})
     @IsNotEmpty()
-    readonly name: string;
+    readonly firstName: string;
 
-    @ApiProperty({description: 'Password'})
+    @ApiProperty({description: 'Last Name'})
     @IsNotEmpty()
-    readonly password: string;
+    readonly lastName: string;
+
+    @ApiProperty({description: 'Country'})
+    @IsNotEmpty()
+    readonly country: string;
 }
 
 export class UserUpdateDto {
-    @ApiProperty({description: 'Email'})
-    @IsOptional()
-    readonly email: string;
-
     @ApiProperty({description: 'Password'})
     @IsOptional()
     readonly password?: string;
+
+    @ApiProperty({description: 'Repeated Password'})
+    @IsOptional()
+    readonly repeatedPassword?: string;
+
+    @ApiProperty({description: 'First Name'})
+    @IsOptional()
+    readonly firstName: string;
+
+    @ApiProperty({description: 'Last Name'})
+    @IsOptional()
+    readonly lastName: string;
+
+    @ApiProperty({description: 'Country'})
+    @IsOptional()
+    readonly country: string;
+
+    @ApiProperty({description: 'About'})
+    @IsOptional()
+    readonly about: string;
 }

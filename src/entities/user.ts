@@ -81,4 +81,35 @@ export class User extends Temporal {
         }
         return result;
     }
+
+    @Column({
+        type: 'varchar',
+        name: 'firstName',
+        nullable: false,
+    })
+    @ApiProperty({description: 'First Name'})
+    firstName: string;
+
+    @Column({
+        type: 'varchar',
+        name: 'lastName',
+        nullable: false,
+    })
+    @ApiProperty({description: 'Last Name'})
+    lastName: string;
+
+    @Column({
+        type: 'varchar',
+        name: 'country',
+        nullable: false,
+    })
+    @ApiProperty({description: 'Country'})
+    country: string;
+
+    @Column({
+        type: 'varchar',
+        name: 'about',
+    })
+    @ApiProperty({description: 'About', required: false})
+    about?: string;
 }

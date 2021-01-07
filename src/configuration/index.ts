@@ -1,10 +1,9 @@
-import {readFileSync} from 'fs';
 import {join} from 'path';
 
 import * as dotenv from 'dotenv';
 import {merge} from 'lodash';
 
-import {validate} from '../utils/utils';
+import {validate} from '../utils';
 
 import {DataSource} from './datasources';
 import {configs, env, logLevels, rootPath} from './server';
@@ -57,6 +56,9 @@ if (env.includes('test')) {
 
 config.userSettings.defaultLogin = envs.DEFAULT_USER_LOGIN || config.userSettings.defaultLogin;
 config.userSettings.defaultPassword = envs.DEFAULT_USER_PASSWORD || config.userSettings.defaultPassword;
+config.userSettings.defaultFirstName = envs.DEFAULT_USER_FIRST_NAME;
+config.userSettings.defaultLastName = envs.DEFAULT_USER_LAST_NAME;
+config.userSettings.defaultCountry = envs.DEFAULT_USER_COUNTRY;
 
 const dbConn = config.dataSource.connectionSettings;
 dbConn.username = envs.PG_USER || dbConn.username;

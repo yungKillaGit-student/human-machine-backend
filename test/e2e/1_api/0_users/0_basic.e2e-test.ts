@@ -19,6 +19,9 @@ describe('USER :: BASIC OPERATIONS', () => {
         email: `${name}@example.com`,
         token: null,
         id: null,
+        firstName: 'test-first-name',
+        lastName: 'test-last-name',
+        country: 'test-country',
     };
     const wrongUser = {
         email: `wrong-${name}@example.com`,
@@ -26,34 +29,46 @@ describe('USER :: BASIC OPERATIONS', () => {
     };
 
     it('POST /api/users should return an error for simple password', async () => {
-        const {email} = testUser;
+        const {email, firstName, lastName, country} = testUser;
         const password = 'abc';
-        const {statusCode, payload} = await post('/api/users', {name, password, email}, TestHelper.defaultEmail);
+        const {statusCode, payload} = await post('/api/users', {
+            password, email, firstName, lastName, country,
+        }, TestHelper.defaultEmail);
         const {message} = JSON.parse(payload);
         assert.equal(statusCode, HttpStatus.BAD_REQUEST, 'Wrong code');
         assert.equal(message, ErrorMessages.BAD_REQUEST, 'Wrong message');
     });
 
     it('POST /api/users should return an error for not valid email address', async () => {
-        const {password} = testUser;
+        const {password, firstName, lastName, country} = testUser;
         const email = 'abc';
-        const {statusCode, payload} = await post('/api/users', {name, password, email}, TestHelper.defaultEmail);
+        const {statusCode, payload} = await post('/api/users', {
+            password, email, firstName, lastName, country,
+        }, TestHelper.defaultEmail);
         const {message} = JSON.parse(payload);
         assert.equal(statusCode, HttpStatus.BAD_REQUEST, 'Wrong code');
         assert.equal(message, ErrorMessages.BAD_REQUEST, 'Wrong message');
     });
 
     it('POST /api/users should create a new user', async () => {
-        const {password, email} = testUser;
-        const {statusCode, payload} = await post('/api/users', {name, password, email}, TestHelper.defaultEmail);
+        const {
+            password, email, firstName, lastName, country,
+        } = testUser;
+        const {statusCode, payload} = await post('/api/users', {
+            password, email, firstName, lastName, country,
+        }, TestHelper.defaultEmail);
         const body = JSON.parse(payload);
         assert.equal(statusCode, HttpStatus.CREATED, 'Wrong code');
         assert.containsAllKeys(body, userResponseDtoKeys, 'Response doesn\'t have all the keys');
     });
 
     it('POST /api/users should return an error for already created user', async () => {
-        const {password, email} = testUser;
-        const {statusCode, payload} = await post('/api/users', {name, password, email}, TestHelper.defaultEmail);
+        const {
+            password, email, firstName, lastName, country,
+        } = testUser;
+        const {statusCode, payload} = await post('/api/users', {
+            password, email, firstName, lastName, country,
+        }, TestHelper.defaultEmail);
         const {message} = JSON.parse(payload);
         assert.equal(statusCode, HttpStatus.CONFLICT, 'Wrong code');
         assert.equal(message, ErrorMessages.CONFLICT_OBJECT_ALREADY_EXISTS, 'Wrong message');
@@ -152,7 +167,7 @@ describe('USER :: BASIC OPERATIONS', () => {
     });
 
     it('PATCH /api/users/:id without creds should return an error', async () => {
-        const {statusCode, payload} = await patch(`/api/users/${testUser.id}`, {password: 'test-pass'}, wrongUser.email);
+        const {statusCode, payload} = await patch(`/api/users/${testUser.id}`, {password: 'test-pass', repeatedPassword: 'test-pass'}, wrongUser.email);
         const {message} = JSON.parse(payload);
         assert.equal(statusCode, HttpStatus.UNAUTHORIZED, 'Wrong code');
         assert.equal(message, ErrorMessages.USER_UNAUTHORIZED, 'Wrong message');
@@ -160,13 +175,13 @@ describe('USER :: BASIC OPERATIONS', () => {
 
     it('PATCH /api/users/:id with wrong id should return an error', async () => {
         const id = 'abc';
-        const {statusCode} = await patch(`/api/users/${id}`, {password: 'test-pass'}, testUser.email);
+        const {statusCode} = await patch(`/api/users/${id}`, {password: 'test-pass', repeatedPassword: 'test-pass'}, testUser.email);
         assert.equal(statusCode, HttpStatus.BAD_REQUEST, 'Wrong code');
     });
 
     it('PATCH /api/users/:id with creds should update user', async () => {
         const newPassword = generatePassword();
-        const {statusCode, payload} = await patch(`/api/users/${testUser.id}`, {password: newPassword}, testUser.email);
+        const {statusCode, payload} = await patch(`/api/users/${testUser.id}`, {password: newPassword, repeatedPassword: newPassword}, testUser.email);
         assert.equal(statusCode, HttpStatus.OK, payload && 'OK');
         assert.equal(!!payload, true, payload && 'OK');
         testUser.password = newPassword;

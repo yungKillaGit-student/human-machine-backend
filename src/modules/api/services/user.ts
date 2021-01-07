@@ -1,5 +1,4 @@
 import {createHmac} from 'crypto';
-import {URL} from 'url';
 
 import {Injectable} from '@nestjs/common';
 import {InjectRepository} from '@nestjs/typeorm';
@@ -11,7 +10,7 @@ import {EntityManager, Repository, Transaction, TransactionManager} from 'typeor
 
 import config from '../../../configuration';
 import {User} from '../../../entities';
-import {ErrorUtils, ExceptionBuilder, Guid, Logger} from '../../../utils';
+import {ErrorUtils, ExceptionBuilder, Logger} from '../../../utils';
 import {UserCreateDto, UserUpdateDto} from '../interfaces';
 
 import {CommonCrudService} from './common-crud';
@@ -21,8 +20,6 @@ const {
     hasNumbers: hasPasswordNumbers,
     hasUppersAndLowers: hasPasswordUppersAndLowers,
 } = config.userSettings.password.requirements;
-const resetPasswordLifetime = config.userSettings.password.reset.lifetime * 1000;
-const redirectLifetime = config.userSettings.redirect.lifetime * 1000;
 
 @Injectable()
 export class UserService extends CommonCrudService<User> {
@@ -82,17 +79,17 @@ export class UserService extends CommonCrudService<User> {
         const newUser = manager.create(User);
         Object.entries({...oldUser, ...updateDto}).forEach(([k, v]) => newUser[k] = v);
 
-        if (updateDto.email) {
-            newUser.email = updateDto.email.toLowerCase();
-        }
-
         if (updateDto.password) {
-            const passwordValidation = User.validatePassword(updateDto.password, minimalPasswordLength, hasPasswordUppersAndLowers, hasPasswordNumbers);
-            if (!passwordValidation.verified) {
-                this.logger.debug(`Wrong password: '${updateDto.password}', ${JSON.stringify(passwordValidation)}`, 'updateUser');
-                ErrorUtils.throwHttpException(ExceptionBuilder.BAD_REQUEST, {entity: User.name, parameters: ['password']});
+            if (updateDto.repeatedPassword) {
+                const passwordValidation = User.validatePassword(updateDto.password, minimalPasswordLength, hasPasswordUppersAndLowers, hasPasswordNumbers);
+                if (!passwordValidation.verified) {
+                    this.logger.debug(`Wrong password: '${updateDto.password}', ${JSON.stringify(passwordValidation)}`, 'updateUser');
+                    ErrorUtils.throwHttpException(ExceptionBuilder.BAD_REQUEST, {entity: User.name, parameters: ['password']});
+                }
+                newUser.password = User.hashPassword(updateDto.password);
+            } else {
+                ErrorUtils.throwHttpException(ExceptionBuilder.BAD_REQUEST, {entity: User.name, parameters: ['repeatedPassword']});
             }
-            newUser.password = User.hashPassword(updateDto.password);
         }
 
         try {

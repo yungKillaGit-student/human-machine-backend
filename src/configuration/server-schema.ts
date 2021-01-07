@@ -27,6 +27,9 @@ export interface IConfig {
     userSettings: {
         defaultLogin: string;
         defaultPassword: string;
+        defaultFirstName: string;
+        defaultLastName: string;
+        defaultCountry: string;
         cookie: { lifetime: number };
         password: {
             requirements: {
@@ -99,6 +102,9 @@ export const schema = {
             properties: {
                 defaultLogin: {type: 'string', allowEmpty: false, required: false},
                 defaultPassword: {type: 'string', allowEmpty: false, required: false},
+                defaultFirstName: {type: 'string', allowEmpty: false},
+                defaultLastName: {type: 'string', allowEmpty: false},
+                defaultCountry: {type: 'string', allowEmpty: false},
                 cookie: {properties: {lifetime: {type: 'number', allowEmpty: false, required: true}}},
                 password: {
                     properties: {
