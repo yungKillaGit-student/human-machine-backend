@@ -8,7 +8,7 @@ import {
 export class Temporal {
     @Column({
         type: 'timestamp with time zone',
-        name: 'updated_at',
+        name: 'updatedAt',
         default: () => 'now()',
     })
     @ApiProperty({description: 'Updated At'})
@@ -16,7 +16,7 @@ export class Temporal {
 
     @Column({
         type: 'timestamp with time zone',
-        name: 'created_at',
+        name: 'createdAt',
         default: () => 'now()',
     })
     @ApiProperty({description: 'Created At'})
