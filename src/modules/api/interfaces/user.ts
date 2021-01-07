@@ -12,6 +12,10 @@ export class UserSigninDto {
 }
 
 export class UserCreateDto extends UserSigninDto {
+    @ApiProperty({description: 'Repeated Password'})
+    @IsNotEmpty()
+    readonly repeatedPassword: string;
+
     @ApiProperty({description: 'First Name'})
     @IsNotEmpty()
     readonly firstName: string;

@@ -31,14 +31,6 @@ export interface IConfig {
         defaultLastName: string;
         defaultCountry: string;
         cookie: { lifetime: number };
-        password: {
-            requirements: {
-                minimalLength: number;
-                hasUppersAndLowers: boolean;
-                hasNumbers: boolean;
-            };
-            reset: { lifetime: number };
-        };
         redirect: { lifetime: number };
     };
     uploadSettings: {
@@ -106,18 +98,6 @@ export const schema = {
                 defaultLastName: {type: 'string', allowEmpty: false},
                 defaultCountry: {type: 'string', allowEmpty: false},
                 cookie: {properties: {lifetime: {type: 'number', allowEmpty: false, required: true}}},
-                password: {
-                    properties: {
-                        requirements: {
-                            properties: {
-                                minimalLength: {type: 'number', allowEmpty: false, required: true},
-                                hasUppersAndLowers: {type: 'boolean', allowEmpty: false, required: true},
-                                hasNumbers: {type: 'boolean', allowEmpty: false, required: true},
-                            },
-                        },
-                        reset: {properties: {lifetime: {type: 'number', allowEmpty: false, required: true}}},
-                    },
-                },
                 redirect: {properties: {lifetime: {type: 'number', allowEmpty: false, required: true}}},
             },
         },

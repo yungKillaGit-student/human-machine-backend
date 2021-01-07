@@ -15,12 +15,6 @@ import {UserCreateDto, UserUpdateDto} from '../interfaces';
 
 import {CommonCrudService} from './common-crud';
 
-const {
-    minimalLength: minimalPasswordLength,
-    hasNumbers: hasPasswordNumbers,
-    hasUppersAndLowers: hasPasswordUppersAndLowers,
-} = config.userSettings.password.requirements;
-
 @Injectable()
 export class UserService extends CommonCrudService<User> {
     logger = Logger.getLogger('UserService');
@@ -38,11 +32,10 @@ export class UserService extends CommonCrudService<User> {
     ): Promise<User> {
         this.logger.trace('Create User', 'createUser');
 
-        const passwordValidation = User.validatePassword(createDto.password, minimalPasswordLength, hasPasswordUppersAndLowers, hasPasswordNumbers);
-        if (!passwordValidation.verified) {
-            this.logger.debug(`Wrong password: '${createDto.password}', ${JSON.stringify(passwordValidation)}`, 'createUser');
-            ErrorUtils.throwHttpException(ExceptionBuilder.BAD_REQUEST, {entity: User.name, parameter: ['password']});
+        if (createDto.repeatedPassword !== createDto.password) {
+            ErrorUtils.throwHttpException(ExceptionBuilder.BAD_REQUEST, {entity: User.name, parameters: ['repeatedPassword']});
         }
+
         if (!isEmail(createDto.email)) {
             this.logger.debug(`Wrong email: '${createDto.email}'`, 'createUser');
             ErrorUtils.throwHttpException(ExceptionBuilder.BAD_REQUEST, {entity: User.name, parameter: ['email']});
@@ -80,12 +73,7 @@ export class UserService extends CommonCrudService<User> {
         Object.entries({...oldUser, ...updateDto}).forEach(([k, v]) => newUser[k] = v);
 
         if (updateDto.password) {
-            if (updateDto.repeatedPassword) {
-                const passwordValidation = User.validatePassword(updateDto.password, minimalPasswordLength, hasPasswordUppersAndLowers, hasPasswordNumbers);
-                if (!passwordValidation.verified) {
-                    this.logger.debug(`Wrong password: '${updateDto.password}', ${JSON.stringify(passwordValidation)}`, 'updateUser');
-                    ErrorUtils.throwHttpException(ExceptionBuilder.BAD_REQUEST, {entity: User.name, parameters: ['password']});
-                }
+            if (updateDto.repeatedPassword && updateDto.repeatedPassword === updateDto.password) {
                 newUser.password = User.hashPassword(updateDto.password);
             } else {
                 ErrorUtils.throwHttpException(ExceptionBuilder.BAD_REQUEST, {entity: User.name, parameters: ['repeatedPassword']});
