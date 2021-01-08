@@ -19,14 +19,6 @@ export const ExceptionBuilder = {
             parameters: data.parameters,
         }),
     },
-    BAD_REQUEST_OBJECTS_NOT_FOUND: {
-        message: ErrorMessages.BAD_REQUEST_OBJECTS_NOT_FOUND,
-        status: HttpStatus.BAD_REQUEST,
-        getParameters: data => ({
-            entity: data.entity,
-            ids: data.ids,
-        }),
-    },
     // BAD REQUEST FILE UPLOAD
     BAD_REQUEST_FILE_LARGE_NAME: {
         message: ErrorMessages.BAD_REQUEST_FILE_LARGE_NAME,
@@ -50,10 +42,6 @@ export const ExceptionBuilder = {
         message: ErrorMessages.BAD_REQUEST_FILE_WRONG_DATA,
         status: HttpStatus.BAD_REQUEST,
         getParameters: data => ({message: data.message}),
-    },
-    BAD_REQUEST_SESSION_ID: {
-        message: ErrorMessages.BAD_REQUEST_SESSION_ID,
-        status: HttpStatus.BAD_REQUEST,
     },
     // 401 UNAUTHORIZED
     UNAUTHORIZED: {

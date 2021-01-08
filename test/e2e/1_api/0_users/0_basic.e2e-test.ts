@@ -156,7 +156,7 @@ describe('USER :: BASIC OPERATIONS', () => {
     });
 
     it('PATCH /api/users/:id without creds should return an error', async () => {
-        const {statusCode, payload} = await patch(`/api/users/${testUser.id}`, {password: 'test-pass', repeatedPassword: 'test-pass'}, wrongUser.email);
+        const {statusCode, payload} = await patch(`/api/users/${testUser.id}`, {newPassword: 'test-pass', repeatedPassword: 'test-pass'}, wrongUser.email);
         const {message} = JSON.parse(payload);
         assert.equal(statusCode, HttpStatus.UNAUTHORIZED, 'Wrong code');
         assert.equal(message, ErrorMessages.USER_UNAUTHORIZED, 'Wrong message');
@@ -164,15 +164,32 @@ describe('USER :: BASIC OPERATIONS', () => {
 
     it('PATCH /api/users/:id with wrong id should return an error', async () => {
         const id = 'abc';
-        const {statusCode} = await patch(`/api/users/${id}`, {password: 'test-pass', repeatedPassword: 'test-pass'}, testUser.email);
+        const {statusCode} = await patch(`/api/users/${id}`, {newPassword: 'test-pass', repeatedPassword: 'test-pass'}, testUser.email);
         assert.equal(statusCode, HttpStatus.BAD_REQUEST, 'Wrong code');
     });
 
     it('PATCH /api/users/:id with creds should update user', async () => {
         const newPassword = generatePassword();
-        const {statusCode, payload} = await patch(`/api/users/${testUser.id}`, {password: newPassword, repeatedPassword: newPassword}, testUser.email);
+        const updateDto = {
+            currentPassword: testUser.password,
+            newPassword: newPassword,
+            repeatedPassword: newPassword,
+        };
+        const {statusCode, payload} = await patch(`/api/users/${testUser.id}`, updateDto, testUser.email);
         assert.equal(statusCode, HttpStatus.OK, payload && 'OK');
         assert.equal(!!payload, true, payload && 'OK');
+        testUser.password = newPassword;
+    });
+
+    it('PATCH /api/users/:id with wrong current password should return an error', async () => {
+        const newPassword = generatePassword();
+        const updateDto = {
+            currentPassword: 'wrong-current-password',
+            newPassword: newPassword,
+            repeatedPassword: newPassword,
+        };
+        const {statusCode} = await patch(`/api/users/${testUser.id}`, updateDto, testUser.email);
+        assert.equal(statusCode, HttpStatus.BAD_REQUEST, ErrorMessages.BAD_REQUEST);
         testUser.password = newPassword;
     });
 

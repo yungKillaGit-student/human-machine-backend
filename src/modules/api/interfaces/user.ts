@@ -30,9 +30,13 @@ export class UserCreateDto extends UserSigninDto {
 }
 
 export class UserUpdateDto {
-    @ApiProperty({description: 'Password'})
+    @ApiProperty({description: 'Current password'})
     @IsOptional()
-    readonly password?: string;
+    readonly currentPassword?: string;
+
+    @ApiProperty({description: 'New password'})
+    @IsOptional()
+    readonly newPassword?: string;
 
     @ApiProperty({description: 'Repeated Password'})
     @IsOptional()

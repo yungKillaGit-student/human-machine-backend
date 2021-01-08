@@ -72,11 +72,15 @@ export class UserService extends CommonCrudService<User> {
         const newUser = manager.create(User);
         Object.entries({...oldUser, ...updateDto}).forEach(([k, v]) => newUser[k] = v);
 
-        if (updateDto.password) {
-            if (updateDto.repeatedPassword && updateDto.repeatedPassword === updateDto.password) {
-                newUser.password = User.hashPassword(updateDto.password);
-            } else {
+        if (updateDto.newPassword) {
+            const {currentPassword, repeatedPassword, newPassword} = updateDto;
+            const isCurrentPasswordValid = currentPassword && User.hashPassword(currentPassword) === oldUser.password;
+            if (repeatedPassword && repeatedPassword === newPassword && isCurrentPasswordValid) {
+                newUser.password = User.hashPassword(updateDto.newPassword);
+            } else if (!repeatedPassword) {
                 ErrorUtils.throwHttpException(ExceptionBuilder.BAD_REQUEST, {entity: User.name, parameters: ['repeatedPassword']});
+            } else if (!currentPassword || !isCurrentPasswordValid) {
+                ErrorUtils.throwHttpException(ExceptionBuilder.BAD_REQUEST, {entity: User.name, parameters: ['currentPassword']});
             }
         }
 
