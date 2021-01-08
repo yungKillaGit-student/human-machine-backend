@@ -28,22 +28,11 @@ describe('USER :: BASIC OPERATIONS', () => {
         password: 'test-wrong',
     };
 
-    it('POST /api/users should return an error for simple password', async () => {
-        const {email, firstName, lastName, country} = testUser;
-        const password = 'abc';
-        const {statusCode, payload} = await post('/api/users', {
-            password, email, firstName, lastName, country,
-        }, TestHelper.defaultEmail);
-        const {message} = JSON.parse(payload);
-        assert.equal(statusCode, HttpStatus.BAD_REQUEST, 'Wrong code');
-        assert.equal(message, ErrorMessages.BAD_REQUEST, 'Wrong message');
-    });
-
     it('POST /api/users should return an error for not valid email address', async () => {
         const {password, firstName, lastName, country} = testUser;
         const email = 'abc';
         const {statusCode, payload} = await post('/api/users', {
-            password, email, firstName, lastName, country,
+            password, email, firstName, lastName, country, repeatedPassword: password,
         }, TestHelper.defaultEmail);
         const {message} = JSON.parse(payload);
         assert.equal(statusCode, HttpStatus.BAD_REQUEST, 'Wrong code');
@@ -55,7 +44,7 @@ describe('USER :: BASIC OPERATIONS', () => {
             password, email, firstName, lastName, country,
         } = testUser;
         const {statusCode, payload} = await post('/api/users', {
-            password, email, firstName, lastName, country,
+            password, email, firstName, lastName, country, repeatedPassword: password,
         }, TestHelper.defaultEmail);
         const body = JSON.parse(payload);
         assert.equal(statusCode, HttpStatus.CREATED, 'Wrong code');
@@ -67,7 +56,7 @@ describe('USER :: BASIC OPERATIONS', () => {
             password, email, firstName, lastName, country,
         } = testUser;
         const {statusCode, payload} = await post('/api/users', {
-            password, email, firstName, lastName, country,
+            password, email, firstName, lastName, country, repeatedPassword: password,
         }, TestHelper.defaultEmail);
         const {message} = JSON.parse(payload);
         assert.equal(statusCode, HttpStatus.CONFLICT, 'Wrong code');

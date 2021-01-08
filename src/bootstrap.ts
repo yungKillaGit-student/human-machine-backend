@@ -2,6 +2,7 @@ import {join} from 'path';
 
 import {NestFactory} from '@nestjs/core';
 import {FastifyAdapter, NestFastifyApplication} from '@nestjs/platform-fastify';
+import * as fileUpload from 'fastify-file-upload';
 import * as helmet from 'helmet';
 
 import {version} from '../package.json';
@@ -32,6 +33,7 @@ export async function bootstrap(): Promise<any> {
         origin: '*',
         allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization'],
     });
+    await app.register(fileUpload);
 
     if (config.enableDocs) {
         Swagger.init(app, {

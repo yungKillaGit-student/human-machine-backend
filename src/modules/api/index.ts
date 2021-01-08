@@ -2,11 +2,11 @@ import {MiddlewareConsumer, Module, NestModule, RequestMethod} from '@nestjs/com
 import {TypeOrmModule} from '@nestjs/typeorm';
 import {CrudConfigService} from '@nestjsx/crud';
 
-import {User} from '../../entities';
+import {File, User} from '../../entities';
 
-import {UserController, VersionController} from './controllers';
+import {FileController, UserController, VersionController} from './controllers';
 import {Auth} from './middlewares';
-import {SessionService, UserService, VersionService} from './services';
+import {FileService, SessionService, UserService, VersionService} from './services';
 
 CrudConfigService.load({
     query: {limit: 100000, cache: 2000},
@@ -21,16 +21,19 @@ CrudConfigService.load({
     imports: [
         TypeOrmModule.forFeature([
             User,
+            File,
         ]),
     ],
     providers: [
         UserService,
         VersionService,
         SessionService,
+        FileService,
     ],
     controllers: [
         UserController,
         VersionController,
+        FileController,
     ],
 })
 export class ApiModule implements NestModule {
