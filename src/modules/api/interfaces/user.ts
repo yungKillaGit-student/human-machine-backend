@@ -27,6 +27,14 @@ export class UserCreateDto extends UserSigninDto {
     @ApiProperty({description: 'Country'})
     @IsNotEmpty()
     readonly country: string;
+
+    @ApiProperty({description: 'About'})
+    @IsOptional()
+    readonly about?: string;
+
+    @ApiProperty({description: 'PIN'})
+    @IsNotEmpty()
+    readonly pinCode: string;
 }
 
 export class UserUpdateDto {
@@ -57,4 +65,8 @@ export class UserUpdateDto {
     @ApiProperty({description: 'About'})
     @IsOptional()
     readonly about: string;
+
+    @ApiProperty({description: 'Image name'})
+    @IsOptional()
+    readonly imageName: string;
 }

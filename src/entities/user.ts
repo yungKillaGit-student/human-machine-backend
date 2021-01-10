@@ -3,10 +3,11 @@ import {createHmac} from 'crypto';
 import {ApiProperty} from '@nestjs/swagger';
 import {Exclude} from 'class-transformer';
 import {
-    BeforeInsert, BeforeUpdate, Column, Entity, PrimaryGeneratedColumn,
+    BeforeInsert, BeforeUpdate, Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn,
 } from 'typeorm';
 
 import {Temporal} from './temporal';
+import {File} from "./file";
 
 @Entity('user', {orderBy: {createdAt: 'DESC'}})
 export class User extends Temporal {
@@ -112,4 +113,22 @@ export class User extends Temporal {
     })
     @ApiProperty({description: 'About', required: false})
     about?: string;
+
+    @Column({
+        type: 'varchar',
+        name: 'pinCode',
+    })
+    @ApiProperty({description: 'PIN'})
+    pinCode?: string;
+
+    @Column({
+        type: 'varchar',
+        name: 'imageId',
+    })
+    imageId?: string;
+
+    @ApiProperty({type: () => File})
+    @ManyToOne(() => File)
+    @JoinColumn({name: 'imageId'})
+    image: File;
 }

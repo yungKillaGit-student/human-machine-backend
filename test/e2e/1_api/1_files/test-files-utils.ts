@@ -22,14 +22,12 @@ export const createForm = (testFile: ITestFile): FormData => {
         contentType: testFile.mime,
         filename: testFile.name,
     });
-    form.append('withThumbnail', testFile.withThumbnail ? 'true' : 'false');
 
     return form;
 };
 
-export const createTestFile = (name: string, file?: Buffer, mime?: string, withThumbnail?: boolean): ITestFile => ({
+export const createTestFile = (name: string, file?: Buffer, mime?: string): ITestFile => ({
     name,
     file: file ? file : readFileSync(join(rootPath, `/test/assets/files/${name}`)),
     mime: mime ? mime : getMimeFromName(name) || '',
-    withThumbnail: withThumbnail ? true : false,
 });

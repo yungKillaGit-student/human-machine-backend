@@ -9,9 +9,6 @@ import {File} from '../../../entities';
 import {ErrorUtils, ExceptionBuilder, Logger} from '../../../utils';
 import {FileContent, FileUploadResponseDto} from '../interfaces';
 
-const {uploadSettings} = config;
-const imageMaxResolution = uploadSettings.maxResolution * 1000000;
-
 @Injectable()
 export class FileService {
     logger = Logger.getLogger('FileService');
@@ -22,13 +19,21 @@ export class FileService {
     ) {
     }
 
-    async load(name: string): Promise<Buffer> {
-        this.logger.trace(name, 'load');
+    async get(name: string): Promise<File> {
+        this.logger.trace(name, 'get');
 
         const file = await this.fileRepository.findOne({name});
         if (!file) {
             ErrorUtils.throwHttpException(ExceptionBuilder.OBJECT_NOT_FOUND, {entity: File.name, id: name});
         }
+
+        return file;
+    }
+
+    async load(name: string): Promise<Buffer> {
+        this.logger.trace(name, 'load');
+
+        const file = await this.get(name);
         return file.data;
     }
 

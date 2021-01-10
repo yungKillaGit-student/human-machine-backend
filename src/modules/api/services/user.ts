@@ -14,6 +14,7 @@ import {ErrorUtils, ExceptionBuilder, Logger} from '../../../utils';
 import {UserCreateDto, UserUpdateDto} from '../interfaces';
 
 import {CommonCrudService} from './common-crud';
+import {FileService} from './file';
 
 @Injectable()
 export class UserService extends CommonCrudService<User> {
@@ -21,6 +22,7 @@ export class UserService extends CommonCrudService<User> {
 
     constructor(
         @InjectRepository(User) repo: Repository<User>,
+        private readonly fileService: FileService,
     ) {
         super(repo);
     }
@@ -82,6 +84,11 @@ export class UserService extends CommonCrudService<User> {
             } else if (!currentPassword || !isCurrentPasswordValid) {
                 ErrorUtils.throwHttpException(ExceptionBuilder.BAD_REQUEST, {entity: User.name, parameters: ['currentPassword']});
             }
+        }
+
+        if (updateDto.imageName) {
+            const uploadedImage = await this.fileService.get(updateDto.imageName);
+            newUser.imageId = uploadedImage.id;
         }
 
         try {

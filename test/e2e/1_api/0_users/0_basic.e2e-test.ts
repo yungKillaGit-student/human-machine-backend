@@ -2,9 +2,11 @@ import {HttpStatus} from '@nestjs/common';
 import {assert} from 'chai';
 import {parse} from 'cookie';
 
+import {FileUploadResponseDto} from '../../../../src/modules/api/interfaces';
 import {ErrorMessages} from '../../../../src/utils';
 import {generatePassword, getTokenFromCookie} from '../../../utils';
 import {TestHelper} from '../../test-helper';
+import {createForm, createTestFile} from '../1_files/test-files-utils';
 
 describe('USER :: BASIC OPERATIONS', () => {
 
@@ -22,17 +24,21 @@ describe('USER :: BASIC OPERATIONS', () => {
         firstName: 'test-first-name',
         lastName: 'test-last-name',
         country: 'test-country',
+        pinCode: 'test-pin-code',
     };
     const wrongUser = {
         email: `wrong-${name}@example.com`,
         password: 'test-wrong',
     };
+    const userImage = createTestFile('test.png');
 
     it('POST /api/users should return an error for not valid email address', async () => {
-        const {password, firstName, lastName, country} = testUser;
+        const {
+            password, firstName, lastName, country, pinCode,
+        } = testUser;
         const email = 'abc';
         const {statusCode, payload} = await post('/api/users', {
-            password, email, firstName, lastName, country, repeatedPassword: password,
+            password, email, firstName, lastName, country, repeatedPassword: password, pinCode,
         }, TestHelper.defaultEmail);
         const {message} = JSON.parse(payload);
         assert.equal(statusCode, HttpStatus.BAD_REQUEST, 'Wrong code');
@@ -41,10 +47,10 @@ describe('USER :: BASIC OPERATIONS', () => {
 
     it('POST /api/users should create a new user', async () => {
         const {
-            password, email, firstName, lastName, country,
+            password, email, firstName, lastName, country, pinCode,
         } = testUser;
         const {statusCode, payload} = await post('/api/users', {
-            password, email, firstName, lastName, country, repeatedPassword: password,
+            password, email, firstName, lastName, country, repeatedPassword: password, pinCode,
         }, TestHelper.defaultEmail);
         const body = JSON.parse(payload);
         assert.equal(statusCode, HttpStatus.CREATED, 'Wrong code');
@@ -53,10 +59,10 @@ describe('USER :: BASIC OPERATIONS', () => {
 
     it('POST /api/users should return an error for already created user', async () => {
         const {
-            password, email, firstName, lastName, country,
+            password, email, firstName, lastName, country, pinCode,
         } = testUser;
         const {statusCode, payload} = await post('/api/users', {
-            password, email, firstName, lastName, country, repeatedPassword: password,
+            password, email, firstName, lastName, country, repeatedPassword: password, pinCode,
         }, TestHelper.defaultEmail);
         const {message} = JSON.parse(payload);
         assert.equal(statusCode, HttpStatus.CONFLICT, 'Wrong code');
@@ -179,6 +185,20 @@ describe('USER :: BASIC OPERATIONS', () => {
         assert.equal(statusCode, HttpStatus.OK, payload && 'OK');
         assert.equal(!!payload, true, payload && 'OK');
         testUser.password = newPassword;
+    });
+
+    it('POST /api/files/upload should create a new file', async () => {
+        const form = createForm(userImage);
+        const {statusCode, payload} = await post('/api/files/upload', form, null, form.getHeaders());
+        const body = JSON.parse(payload) as FileUploadResponseDto;
+        assert.equal(statusCode, HttpStatus.CREATED, 'Wrong response HTTP code');
+        assert.containsAllKeys(body, ['name', 'height', 'width'], 'Response doesn\'t have all the keys');
+    });
+
+    it('PATCH /api/users/:id with creds should update user with uploaded image', async () => {
+        const {statusCode, payload} = await patch(`/api/users/${testUser.id}`, {imageName: userImage.name}, testUser.email);
+        assert.equal(statusCode, HttpStatus.OK, payload && 'OK');
+        assert.equal(!!payload, true, payload && 'OK');
     });
 
     it('PATCH /api/users/:id with wrong current password should return an error', async () => {

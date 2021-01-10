@@ -10,6 +10,7 @@ interface IUser {
   firstName: string;
   lastName: string;
   country: string;
+  pinCode: string;
 }
 
 export const checkDefaultData = async () => {
@@ -24,6 +25,7 @@ class DefaultData {
             firstName: config.userSettings.defaultFirstName,
             lastName: config.userSettings.defaultLastName,
             country: config.userSettings.defaultCountry,
+            pinCode: config.userSettings.defaultPinCode,
         };
         await DefaultData.initUser(defaultAdminUser, 'default admin user');
     }
@@ -32,7 +34,7 @@ class DefaultData {
         Logger.info(`Create default ${message}`);
 
         const {
-            email, password, firstName, lastName, country,
+            email, password, firstName, lastName, country, pinCode,
         } = defaultUser;
         if (!email || !password || !firstName || !lastName || !country) {
             throw new Error('Check config. Not all necessary parameters are set');
@@ -51,6 +53,7 @@ class DefaultData {
             user.firstName = firstName;
             user.lastName = lastName;
             user.country = country;
+            user.pinCode = pinCode;
 
             try {
                 await manager.save(User, user);

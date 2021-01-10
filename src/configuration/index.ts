@@ -59,6 +59,7 @@ config.userSettings.defaultPassword = envs.DEFAULT_USER_PASSWORD || config.userS
 config.userSettings.defaultFirstName = envs.DEFAULT_USER_FIRST_NAME;
 config.userSettings.defaultLastName = envs.DEFAULT_USER_LAST_NAME;
 config.userSettings.defaultCountry = envs.DEFAULT_USER_COUNTRY;
+config.userSettings.defaultPinCode = envs.DEFAULT_USER_PIN_CODE;
 
 const dbConn = config.dataSource.connectionSettings;
 dbConn.username = envs.PG_USER || dbConn.username;

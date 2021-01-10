@@ -11,7 +11,7 @@ import {createForm, createTestFile} from './test-files-utils';
 describe('FILE :: IMAGE LIMITS', () => {
     const {post} = new TestHelper();
 
-    const {maxNameLength, maxSize, maxResolution} = config.uploadSettings;
+    const {maxNameLength, maxSize} = config.uploadSettings;
     const fileUploadResponseDtoKeys = ['name', 'height', 'width'];
 
     const pngFile = createTestFile('test.png');

@@ -43,7 +43,6 @@ export class ApiModule implements NestModule {
                 {path: '/api/users/current', method: RequestMethod.GET},
                 {path: '/api/users/signout', method: RequestMethod.POST},
                 {path: '/api/users/', method: RequestMethod.GET},
-                {path: '/api/users/:id', method: RequestMethod.PATCH},
                 {path: '/api/users/:id', method: RequestMethod.DELETE},
             );
     }
