@@ -23,7 +23,7 @@ export const truncate = async () => {
         const entities = dbOptions.entities as EntitySchema[];
 
         Logger.info(`Truncating data from the database ${dbOptions.type}`);
-        const keepData: string[] = [];
+        const keepData: string[] = ['role'];
 
         await dbConn.transaction(async transactionalEntityManager => {
             for (const entity of entities) {

@@ -2,7 +2,7 @@ import {MiddlewareConsumer, Module, NestModule, RequestMethod} from '@nestjs/com
 import {TypeOrmModule} from '@nestjs/typeorm';
 import {CrudConfigService} from '@nestjsx/crud';
 
-import {File, User} from '../../entities';
+import {File, Role, User} from '../../entities';
 
 import {FileController, UserController, VersionController} from './controllers';
 import {Auth} from './middlewares';
@@ -22,6 +22,7 @@ CrudConfigService.load({
         TypeOrmModule.forFeature([
             User,
             File,
+            Role,
         ]),
     ],
     providers: [

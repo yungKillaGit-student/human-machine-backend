@@ -1,7 +1,7 @@
-import {User} from '../entities';
-import {File} from '../entities';
+import {File, Role, User} from '../entities';
 
 export const api = [
     User,
     File,
+    Role
 ];
