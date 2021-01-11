@@ -1,9 +1,9 @@
 import {MigrationInterface, QueryRunner, Table} from 'typeorm';
 
-export class addEvent1610292196215 implements MigrationInterface {
+export class addDocument1610360104108 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
-        const tableName = 'event';
+        const tableName = 'document';
         await queryRunner.query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp";');
         await queryRunner.createTable(
             new Table({
@@ -20,22 +20,21 @@ export class addEvent1610292196215 implements MigrationInterface {
                         type: 'varchar',
                         isUnique: true,
                     }, {
-                        name: 'startDate',
-                        type: 'date',
+                        name: 'day',
+                        type: 'varchar',
                     }, {
-                        name: 'cOneDate',
-                        type: 'date',
+                        name: 'content',
+                        type: 'varchar',
                     }, {
-                        name: 'cPlusOneDate',
-                        type: 'date',
-                    }, {
-                        name: 'finishDate',
-                        type: 'date',
+                        name: 'isSigned',
+                        type: 'bool',
+                        default: false,
                     },
                 ],
             }),
         );
-        await queryRunner.query(`ALTER TABLE "${tableName}" ADD COLUMN "imageId" uuid REFERENCES "file" (id) DEFAULT NULL;`);
+        await queryRunner.query(`ALTER TABLE "${tableName}" ADD COLUMN "roleId" uuid REFERENCES "role" (id) NOT NULL;`);
+        await queryRunner.query(`ALTER TABLE "${tableName}" ADD COLUMN "eventId" uuid REFERENCES "event" (id) DEFAULT NULL;`);
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
