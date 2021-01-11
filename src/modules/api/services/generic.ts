@@ -1,5 +1,4 @@
 import {Injectable} from '@nestjs/common';
-import {InjectRepository} from '@nestjs/typeorm';
 import {CrudRequest, GetManyDefaultResponse} from '@nestjsx/crud';
 import {TypeOrmCrudService} from '@nestjsx/crud-typeorm';
 import {plainToClass} from 'class-transformer';
@@ -51,10 +50,7 @@ export class GenericService<T> extends TypeOrmCrudService<T> {
             ErrorUtils.throwHttpException(ExceptionBuilder.OBJECT_NOT_FOUND, {entity: entityName, id});
         }
 
-        const updatedObj = {
-            ...body,
-            ...{updatedAt: new Date()},
-        };
+        const updatedObj = {...body};
         try {
             const updateResult = await this.repo.update(id, updatedObj);
             ErrorUtils.handleUpdateResult(updateResult, entityName, updatedObj);
@@ -108,7 +104,7 @@ export class GenericService<T> extends TypeOrmCrudService<T> {
         const entityName = this.entityType.name;
         this.logger.trace(`Get all ${entityName} objects`, 'getAll');
 
-        if (req.query) {
+        if (req.query && Object.keys(req.query).length > 0) {
             const response = new CrudResponse();
 
             const data = await this.getData(req.query);

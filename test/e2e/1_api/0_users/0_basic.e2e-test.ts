@@ -161,16 +161,14 @@ describe('USER :: BASIC OPERATIONS', () => {
         TestHelper.rememberToken(testUser.email, token);
     });
 
-    it('PATCH /api/users/:id without creds should return an error', async () => {
-        const {statusCode, payload} = await patch(`/api/users/${testUser.id}`, {newPassword: 'test-pass', repeatedPassword: 'test-pass'}, wrongUser.email);
-        const {message} = JSON.parse(payload);
-        assert.equal(statusCode, HttpStatus.UNAUTHORIZED, 'Wrong code');
-        assert.equal(message, ErrorMessages.USER_UNAUTHORIZED, 'Wrong message');
-    });
-
     it('PATCH /api/users/:id with wrong id should return an error', async () => {
         const id = 'abc';
-        const {statusCode} = await patch(`/api/users/${id}`, {newPassword: 'test-pass', repeatedPassword: 'test-pass'}, testUser.email);
+        const updateDto = {
+            newPassword: 'test-pass',
+            repeatedPassword: 'test-pass',
+            currentPassword: testUser.password,
+        };
+        const {statusCode} = await patch(`/api/users/${id}`, updateDto, testUser.email);
         assert.equal(statusCode, HttpStatus.BAD_REQUEST, 'Wrong code');
     });
 

@@ -6,8 +6,8 @@ import {
     BeforeInsert, BeforeUpdate, Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn,
 } from 'typeorm';
 
+import {File} from './file';
 import {Temporal} from './temporal';
-import {File} from "./file";
 
 @Entity('user', {orderBy: {createdAt: 'DESC'}})
 export class User extends Temporal {

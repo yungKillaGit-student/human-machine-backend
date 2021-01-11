@@ -14,9 +14,8 @@ export const genericCrudSettings: CrudOptions = {
         updateOneBase: {allowParamsOverride: true},
     },
     query: {
-        sort: [{field: 'createdAt', order: 'ASC'}],
         maxLimit: 250,
-        alwaysPaginate: true,
+        alwaysPaginate: false,
     },
 };
 

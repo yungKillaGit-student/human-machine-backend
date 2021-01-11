@@ -1,7 +1,8 @@
-import {File, Role, User} from '../entities';
+import {Event, File, Role, User} from '../entities';
 
 export const api = [
     User,
     File,
-    Role
+    Role,
+    Event,
 ];
