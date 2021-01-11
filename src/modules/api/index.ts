@@ -2,12 +2,20 @@ import {MiddlewareConsumer, Module, NestModule, RequestMethod} from '@nestjs/com
 import {TypeOrmModule} from '@nestjs/typeorm';
 import {CrudConfigService} from '@nestjsx/crud';
 
-import {Event, File, Role, User} from '../../entities';
+import {
+    Document, Event, File, Role, User,
+} from '../../entities';
 
 import {EventController, FileController, UserController, VersionController} from './controllers';
+import {DocumentController} from './controllers/document';
 import {Auth} from './middlewares';
 import {
-    EventService, FileService, SessionService, UserService, VersionService,
+    DocumentService,
+    EventService,
+    FileService,
+    SessionService,
+    UserService,
+    VersionService,
 } from './services';
 
 CrudConfigService.load({
@@ -26,6 +34,7 @@ CrudConfigService.load({
             File,
             Role,
             Event,
+            Document,
         ]),
     ],
     providers: [
@@ -34,12 +43,14 @@ CrudConfigService.load({
         SessionService,
         FileService,
         EventService,
+        DocumentService,
     ],
     controllers: [
         UserController,
         VersionController,
         FileController,
         EventController,
+        DocumentController,
     ],
 })
 export class ApiModule implements NestModule {
@@ -51,6 +62,7 @@ export class ApiModule implements NestModule {
                 {path: '/api/users/', method: RequestMethod.GET},
                 {path: '/api/users/:id', method: RequestMethod.DELETE},
                 EventController,
+                DocumentController,
             );
     }
 }

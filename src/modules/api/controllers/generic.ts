@@ -19,12 +19,12 @@ export const genericCrudSettings: CrudOptions = {
     },
 };
 
-export class GenericController<T> implements CrudController<T> {
+export class GenericController<Entity, EntityCreateDto, EntityUpdateDto> implements CrudController<Entity> {
 
-    constructor(public service: GenericService<T>) { }
+    constructor(public service: GenericService<Entity>) { }
 
     @Override('createOneBase')
-    async create(@Request() req, @ParsedBody() body: T): Promise<T> {
+    async create(@Request() req, @ParsedBody() body: EntityCreateDto): Promise<Entity> {
         return this.service.create(body);
     }
 
@@ -32,23 +32,23 @@ export class GenericController<T> implements CrudController<T> {
     async patch(
         @Request() req,
         @Param('id') id: string,
-        @ParsedBody() body: DeepPartial<T>,
-    ): Promise<{oldObject: T; newObject: T}> {
+        @ParsedBody() body: EntityUpdateDto,
+    ): Promise<{oldObject: Entity; newObject: Entity}> {
         return this.service.update(id, body);
     }
 
     @Override('deleteOneBase')
-    async delete(@Request() req, @Param('id') id: string): Promise<T> {
+    async delete(@Request() req, @Param('id') id: string): Promise<Entity> {
         return this.service.delete(id);
     }
 
     @Override('getOneBase')
-    async getById(@Request() req, @Param('id') id: string): Promise<T> {
+    async getById(@Request() req, @Param('id') id: string): Promise<Entity> {
         return this.service.getById(id);
     }
 
     @Override('getManyBase')
-    async getAll(@Request() req, @ParsedRequest() parsedReq: CrudRequest): Promise<GetManyDefaultResponse<T> | T[]> {
+    async getAll(@Request() req, @ParsedRequest() parsedReq: CrudRequest): Promise<GetManyDefaultResponse<Entity> | Entity[]> {
         return this.service.getAll(parsedReq, req);
     }
 }

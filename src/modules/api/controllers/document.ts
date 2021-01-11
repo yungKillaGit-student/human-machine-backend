@@ -6,19 +6,19 @@ import {
     Crud, CrudRequest, GetManyDefaultResponse, Override, ParsedBody, ParsedRequest,
 } from '@nestjsx/crud';
 
-import {Event} from '../../../entities';
-import {EventCreateDto, EventUpdateDto} from '../interfaces';
-import {EventService} from '../services';
+import {Document} from '../../../entities';
+import {DocumentCreateDto, DocumentUpdateDto} from '../interfaces';
+import {DocumentService} from '../services';
 
 import {GenericController, genericCrudSettings} from './generic';
 
 @Crud({
     ...genericCrudSettings,
     ...{
-        model: {type: Event},
+        model: {type: Document},
         dto: {
-            create: EventCreateDto,
-            update: EventUpdateDto,
+            create: DocumentCreateDto,
+            update: DocumentUpdateDto,
         },
         query: {
             sort: [{field: 'title', order: 'ASC'}],
@@ -26,17 +26,17 @@ import {GenericController, genericCrudSettings} from './generic';
         },
     },
 })
-@ApiTags('events')
-@Controller('/api/events')
+@ApiTags('documents')
+@Controller('/api/documents')
 @UsePipes(new ValidationPipe({transform: true}))
-export class EventController extends GenericController<Event, EventCreateDto, EventUpdateDto> {
+export class DocumentController extends GenericController<Document, DocumentCreateDto, DocumentUpdateDto> {
 
-    constructor(public service: EventService) {
+    constructor(public service: DocumentService) {
         super(service);
     }
 
     @Override('createOneBase')
-    async create(@Request() req, @ParsedBody() body: EventCreateDto): Promise<Event> {
+    async create(@Request() req, @ParsedBody() body: DocumentCreateDto): Promise<Document> {
         return this.service.create(body);
     }
 
@@ -44,23 +44,23 @@ export class EventController extends GenericController<Event, EventCreateDto, Ev
     async patch(
         @Request() req,
         @Param('id') id,
-        @ParsedBody() body: EventUpdateDto,
-    ): Promise<{oldObject: Event; newObject: Event}> {
+        @ParsedBody() body: DocumentUpdateDto,
+    ): Promise<{oldObject: Document; newObject: Document}> {
         return this.service.update(id, body);
     }
 
     @Override('deleteOneBase')
-    async delete(@Request() req, @Param('id') id): Promise<Event> {
+    async delete(@Request() req, @Param('id') id): Promise<Document> {
         return this.service.delete(id);
     }
 
     @Override('getOneBase')
-    async getById(@Request() req, @Param('id') id): Promise<Event> {
+    async getById(@Request() req, @Param('id') id): Promise<Document> {
         return this.service.getById(id);
     }
 
     @Override('getManyBase')
-    async getAll(@Request() req, @ParsedRequest() parsedReq: CrudRequest): Promise<GetManyDefaultResponse<Event> | Event[]> {
+    async getAll(@Request() req, @ParsedRequest() parsedReq: CrudRequest): Promise<GetManyDefaultResponse<Document> | Document[]> {
         return this.service.getAll(req, parsedReq);
     }
 }

@@ -39,7 +39,7 @@ export class Document {
         nullable: false,
         default: false,
     })
-    isSigned: string;
+    isSigned: boolean;
 
     @Column({
         type: 'varchar',

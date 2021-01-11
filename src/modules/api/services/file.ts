@@ -1,10 +1,8 @@
 import {Injectable} from '@nestjs/common';
 import {InjectRepository} from '@nestjs/typeorm';
 import {imageSize as getImageMetadata} from 'image-size';
-import {read as readImage} from 'jimp';
 import {Repository} from 'typeorm';
 
-import config from '../../../configuration';
 import {File} from '../../../entities';
 import {ErrorUtils, ExceptionBuilder, Logger} from '../../../utils';
 import {FileContent, FileUploadResponseDto} from '../interfaces';
