@@ -62,7 +62,7 @@ describe('EVENT :: BASIC CRUD OPERATIONS', () => {
         events.push(secondResponseBody);
     });
 
-    it('POST /api/events should an error with already existed name', async () => {
+    it('POST /api/events should return an error with already existed name', async () => {
         const {statusCode, payload} = await post(`/api/${endpoint}`, testEvent, TestHelper.defaultEmail);
         const {message} = JSON.parse(payload);
         assert.equal(statusCode, HttpStatus.CONFLICT, 'wrong response HTTP code');
@@ -98,8 +98,8 @@ describe('EVENT :: BASIC CRUD OPERATIONS', () => {
     });
 
     it('DELETE /api/events/:id should delete event', async () => {
-        const site = events[0];
-        const {statusCode} = await del(`/api/${endpoint}/${site.id}`, TestHelper.defaultEmail);
+        const event = events[0];
+        const {statusCode} = await del(`/api/${endpoint}/${event.id}`, TestHelper.defaultEmail);
         assert.equal(statusCode, HttpStatus.OK, 'wrong response HTTP code');
     });
 });
