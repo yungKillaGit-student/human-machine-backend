@@ -1,0 +1,1299 @@
+{
+  "tables": [
+    {
+      "caption": "",
+      "rows": {
+        "0": {
+          "columns": {
+            "0": "Code",
+            "1": "Name",
+            "2": "Capital/Administrative centre[a]",
+            "3": "Flag",
+            "4": "Coatof arms",
+            "5": "Type",
+            "6": "Federal district",
+            "7": "Economic region",
+            "8": "Area(km2)[16]",
+            "9": "Population[17]",
+            "10": "Yearestablished"
+          }
+        },
+        "1": {
+          "columns": {
+            "0": "01",
+            "1": "Adygea, Republic of",
+            "2": "Maykop",
+            "3": "",
+            "4": "",
+            "5": "republic",
+            "6": "Southern",
+            "7": "North Caucasus",
+            "8": "7,600",
+            "9": "447,109",
+            "10": "1922"
+          }
+        },
+        "2": {
+          "columns": {
+            "0": "02",
+            "1": "Bashkortostan, Republic of",
+            "2": "Ufa",
+            "3": "",
+            "4": "",
+            "5": "republic",
+            "6": "Volga",
+            "7": "Ural",
+            "8": "143,600",
+            "9": "4,104,336",
+            "10": "1919"
+          }
+        },
+        "3": {
+          "columns": {
+            "0": "03",
+            "1": "Buryatia, Republic of",
+            "2": "Ulan-Ude",
+            "3": "",
+            "4": "",
+            "5": "republic",
+            "6": "Far Eastern",
+            "7": "East Siberian",
+            "8": "351,300",
+            "9": "981,238",
+            "10": "1923"
+          }
+        },
+        "4": {
+          "columns": {
+            "0": "04",
+            "1": "Altai Republic",
+            "2": "Gorno-Altaysk",
+            "3": "",
+            "4": "",
+            "5": "republic",
+            "6": "Siberian",
+            "7": "West Siberian",
+            "8": "92,600",
+            "9": "202,947",
+            "10": "1922"
+          }
+        },
+        "5": {
+          "columns": {
+            "0": "05",
+            "1": "Dagestan, Republic of",
+            "2": "Makhachkala",
+            "3": "",
+            "4": "",
+            "5": "republic",
+            "6": "North Caucasian",
+            "7": "North Caucasus",
+            "8": "50,300",
+            "9": "2,576,531",
+            "10": "1921"
+          }
+        },
+        "6": {
+          "columns": {
+            "0": "06",
+            "1": "Ingushetia, Republic of",
+            "2": "Magas(Largest city: Nazran)",
+            "3": "",
+            "4": "",
+            "5": "republic",
+            "6": "North Caucasian",
+            "7": "North Caucasus",
+            "8": "4,000",
+            "9": "467,294",
+            "10": "1992"
+          }
+        },
+        "7": {
+          "columns": {
+            "0": "07",
+            "1": "Kabardino-Balkar Republic",
+            "2": "Nalchik",
+            "3": "",
+            "4": "",
+            "5": "republic",
+            "6": "North Caucasian",
+            "7": "North Caucasus",
+            "8": "12,500",
+            "9": "901,494",
+            "10": "1936"
+          }
+        },
+        "8": {
+          "columns": {
+            "0": "08",
+            "1": "Kalmykia, Republic of",
+            "2": "Elista",
+            "3": "",
+            "4": "",
+            "5": "republic",
+            "6": "Southern",
+            "7": "Volga",
+            "8": "76,100",
+            "9": "292,410",
+            "10": "1957"
+          }
+        },
+        "9": {
+          "columns": {
+            "0": "09",
+            "1": "Karachay-Cherkess Republic",
+            "2": "Cherkessk",
+            "3": "",
+            "4": "",
+            "5": "republic",
+            "6": "North Caucasian",
+            "7": "North Caucasus",
+            "8": "14,100",
+            "9": "439,470",
+            "10": "1957"
+          }
+        },
+        "10": {
+          "columns": {
+            "0": "10",
+            "1": "Karelia, Republic of",
+            "2": "Petrozavodsk",
+            "3": "",
+            "4": "",
+            "5": "republic",
+            "6": "Northwestern",
+            "7": "Northern",
+            "8": "172,400",
+            "9": "716,281",
+            "10": "1956"
+          }
+        },
+        "11": {
+          "columns": {
+            "0": "11",
+            "1": "Komi Republic",
+            "2": "Syktyvkar",
+            "3": "",
+            "4": "",
+            "5": "republic",
+            "6": "Northwestern",
+            "7": "Northern",
+            "8": "415,900",
+            "9": "1,018,674",
+            "10": "1921"
+          }
+        },
+        "12": {
+          "columns": {
+            "0": "12",
+            "1": "Mari El Republic",
+            "2": "Yoshkar-Ola",
+            "3": "",
+            "4": "",
+            "5": "republic",
+            "6": "Volga",
+            "7": "Volga-Vyatka",
+            "8": "23,200",
+            "9": "727,979",
+            "10": "1920"
+          }
+        },
+        "13": {
+          "columns": {
+            "0": "13",
+            "1": "Mordovia, Republic of",
+            "2": "Saransk",
+            "3": "",
+            "4": "",
+            "5": "republic",
+            "6": "Volga",
+            "7": "Volga-Vyatka",
+            "8": "26,200",
+            "9": "888,766",
+            "10": "1930"
+          }
+        },
+        "14": {
+          "columns": {
+            "0": "14",
+            "1": "Sakha (Yakutia) Republic",
+            "2": "Yakutsk",
+            "3": "",
+            "4": "",
+            "5": "republic",
+            "6": "Far Eastern",
+            "7": "Far Eastern",
+            "8": "3,103,200",
+            "9": "949,280",
+            "10": "1922"
+          }
+        },
+        "15": {
+          "columns": {
+            "0": "15",
+            "1": "North Ossetia-Alania, Republic of",
+            "2": "Vladikavkaz",
+            "3": "",
+            "4": "",
+            "5": "republic",
+            "6": "North Caucasian",
+            "7": "North Caucasus",
+            "8": "8,000",
+            "9": "710,275",
+            "10": "1924"
+          }
+        },
+        "16": {
+          "columns": {
+            "0": "16",
+            "1": "Tatarstan, Republic of",
+            "2": "Kazan",
+            "3": "",
+            "4": "",
+            "5": "republic",
+            "6": "Volga",
+            "7": "Volga",
+            "8": "68,000",
+            "9": "3,779,265",
+            "10": "1920"
+          }
+        },
+        "17": {
+          "columns": {
+            "0": "17",
+            "1": "Tuva Republic",
+            "2": "Kyzyl",
+            "3": "",
+            "4": "",
+            "5": "republic",
+            "6": "Siberian",
+            "7": "East Siberian",
+            "8": "170,500",
+            "9": "305,510",
+            "10": "1944"
+          }
+        },
+        "18": {
+          "columns": {
+            "0": "18",
+            "1": "Udmurt Republic",
+            "2": "Izhevsk",
+            "3": "",
+            "4": "",
+            "5": "republic",
+            "6": "Volga",
+            "7": "Ural",
+            "8": "42,100",
+            "9": "1,570,316",
+            "10": "1920"
+          }
+        },
+        "19": {
+          "columns": {
+            "0": "19",
+            "1": "Khakassia, Republic of",
+            "2": "Abakan",
+            "3": "",
+            "4": "",
+            "5": "republic",
+            "6": "Siberian",
+            "7": "East Siberian",
+            "8": "61,900",
+            "9": "546,072",
+            "10": "1930"
+          }
+        },
+        "20": {
+          "columns": {
+            "0": "20",
+            "1": "Chechen Republic",
+            "2": "Grozny",
+            "3": "",
+            "4": "",
+            "5": "republic",
+            "6": "North Caucasian",
+            "7": "North Caucasus",
+            "8": "15,300",
+            "9": "1,103,686",
+            "10": "1991"
+          }
+        },
+        "21": {
+          "columns": {
+            "0": "21",
+            "1": "Chuvash Republic",
+            "2": "Cheboksary",
+            "3": "",
+            "4": "",
+            "5": "republic",
+            "6": "Volga",
+            "7": "Volga-Vyatka",
+            "8": "18,300",
+            "9": "1,313,754",
+            "10": "1920"
+          }
+        },
+        "22": {
+          "columns": {
+            "0": "22",
+            "1": "Altai Krai",
+            "2": "Barnaul",
+            "3": "",
+            "4": "",
+            "5": "krai",
+            "6": "Siberian",
+            "7": "West Siberian",
+            "8": "169,100",
+            "9": "2,607,426",
+            "10": "1937"
+          }
+        },
+        "23": {
+          "columns": {
+            "0": "23",
+            "1": "Krasnodar Krai",
+            "2": "Krasnodar",
+            "3": "",
+            "4": "",
+            "5": "krai",
+            "6": "Southern",
+            "7": "North Caucasus",
+            "8": "76,000",
+            "9": "5,125,221",
+            "10": "1937"
+          }
+        },
+        "24": {
+          "columns": {
+            "0": "24",
+            "1": "Krasnoyarsk Krai",
+            "2": "Krasnoyarsk",
+            "3": "",
+            "4": "",
+            "5": "krai",
+            "6": "Siberian",
+            "7": "East Siberian",
+            "8": "2,339,700",
+            "9": "2,966,042",
+            "10": "1934"
+          }
+        },
+        "25": {
+          "columns": {
+            "0": "25",
+            "1": "Primorsky Krai",
+            "2": "Vladivostok",
+            "3": "",
+            "4": "",
+            "5": "krai",
+            "6": "Far Eastern",
+            "7": "Far Eastern",
+            "8": "165,900",
+            "9": "2,071,210",
+            "10": "1938"
+          }
+        },
+        "26": {
+          "columns": {
+            "0": "26",
+            "1": "Stavropol Krai",
+            "2": "Stavropol",
+            "3": "",
+            "4": "",
+            "5": "krai",
+            "6": "North Caucasian",
+            "7": "North Caucasus",
+            "8": "66,500",
+            "9": "2,735,139",
+            "10": "1934"
+          }
+        },
+        "27": {
+          "columns": {
+            "0": "27",
+            "1": "Khabarovsk Krai",
+            "2": "Khabarovsk",
+            "3": "",
+            "4": "",
+            "5": "krai",
+            "6": "Far Eastern",
+            "7": "Far Eastern",
+            "8": "788,600",
+            "9": "1,436,570",
+            "10": "1938"
+          }
+        },
+        "28": {
+          "columns": {
+            "0": "28",
+            "1": "Amur Oblast",
+            "2": "Blagoveshchensk",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Far Eastern",
+            "7": "Far Eastern",
+            "8": "363,700",
+            "9": "902,844",
+            "10": "1932"
+          }
+        },
+        "29": {
+          "columns": {
+            "0": "29",
+            "1": "Arkhangelsk Oblast",
+            "2": "Arkhangelsk",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Northwestern",
+            "7": "Northern",
+            "8": "587,400",
+            "9": "1,336,539",
+            "10": "1937"
+          }
+        },
+        "30": {
+          "columns": {
+            "0": "30",
+            "1": "Astrakhan Oblast",
+            "2": "Astrakhan",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Southern",
+            "7": "Volga",
+            "8": "44,100",
+            "9": "1,005,276",
+            "10": "1943"
+          }
+        },
+        "31": {
+          "columns": {
+            "0": "31",
+            "1": "Belgorod Oblast",
+            "2": "Belgorod",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Central",
+            "7": "Central Black Earth",
+            "8": "27,100",
+            "9": "1,511,620",
+            "10": "1954"
+          }
+        },
+        "32": {
+          "columns": {
+            "0": "32",
+            "1": "Bryansk Oblast",
+            "2": "Bryansk",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Central",
+            "7": "Central",
+            "8": "34,900",
+            "9": "1,378,941",
+            "10": "1944"
+          }
+        },
+        "33": {
+          "columns": {
+            "0": "33",
+            "1": "Vladimir Oblast",
+            "2": "Vladimir",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Central",
+            "7": "Central",
+            "8": "29,000",
+            "9": "1,523,990",
+            "10": "1944"
+          }
+        },
+        "34": {
+          "columns": {
+            "0": "34",
+            "1": "Volgograd Oblast",
+            "2": "Volgograd",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Southern",
+            "7": "Volga",
+            "8": "113,900",
+            "9": "2,699,223",
+            "10": "1937"
+          }
+        },
+        "35": {
+          "columns": {
+            "0": "35",
+            "1": "Vologda Oblast",
+            "2": "Vologda(Largest city: Cherepovets)",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Northwestern",
+            "7": "Northern",
+            "8": "145,700",
+            "9": "1,269,568",
+            "10": "1937"
+          }
+        },
+        "36": {
+          "columns": {
+            "0": "36",
+            "1": "Voronezh Oblast",
+            "2": "Voronezh",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Central",
+            "7": "Central Black Earth",
+            "8": "52,400",
+            "9": "2,378,803",
+            "10": "1934"
+          }
+        },
+        "37": {
+          "columns": {
+            "0": "37",
+            "1": "Ivanovo Oblast",
+            "2": "Ivanovo",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Central",
+            "7": "Central",
+            "8": "21,800",
+            "9": "1,148,329",
+            "10": "1936"
+          }
+        },
+        "38": {
+          "columns": {
+            "0": "38",
+            "1": "Irkutsk Oblast",
+            "2": "Irkutsk",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Siberian",
+            "7": "East Siberian",
+            "8": "767,900",
+            "9": "2,581,705",
+            "10": "1937"
+          }
+        },
+        "39": {
+          "columns": {
+            "0": "39",
+            "1": "Kaliningrad Oblast",
+            "2": "Kaliningrad",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Northwestern",
+            "7": "Kaliningrad",
+            "8": "15,100",
+            "9": "955,281",
+            "10": "1946"
+          }
+        },
+        "40": {
+          "columns": {
+            "0": "40",
+            "1": "Kaluga Oblast",
+            "2": "Kaluga",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Central",
+            "7": "Central",
+            "8": "29,900",
+            "9": "1,041,641",
+            "10": "1944"
+          }
+        },
+        "41": {
+          "columns": {
+            "0": "41",
+            "1": "Kamchatka Krai",
+            "2": "Petropavlovsk-Kamchatsky",
+            "3": "",
+            "4": "",
+            "5": "krai",
+            "6": "Far Eastern",
+            "7": "Far Eastern",
+            "8": "472,300",
+            "9": "358,801",
+            "10": "2007"
+          }
+        },
+        "42": {
+          "columns": {
+            "0": "42",
+            "1": "Kemerovo Oblast",
+            "2": "Kemerovo",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Siberian",
+            "7": "West Siberian",
+            "8": "95,500",
+            "9": "2,899,142",
+            "10": "1943"
+          }
+        },
+        "43": {
+          "columns": {
+            "0": "43",
+            "1": "Kirov Oblast",
+            "2": "Kirov",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Volga",
+            "7": "Volga-Vyatka",
+            "8": "120,800",
+            "9": "1,503,529",
+            "10": "1934"
+          }
+        },
+        "44": {
+          "columns": {
+            "0": "44",
+            "1": "Kostroma Oblast",
+            "2": "Kostroma",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Central",
+            "7": "Central",
+            "8": "60,100",
+            "9": "736,641",
+            "10": "1944"
+          }
+        },
+        "45": {
+          "columns": {
+            "0": "45",
+            "1": "Kurgan Oblast",
+            "2": "Kurgan",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Ural",
+            "7": "Ural",
+            "8": "71,000",
+            "9": "1,019,532",
+            "10": "1943"
+          }
+        },
+        "46": {
+          "columns": {
+            "0": "46",
+            "1": "Kursk Oblast",
+            "2": "Kursk",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Central",
+            "7": "Central Black Earth",
+            "8": "29,800",
+            "9": "1,235,091",
+            "10": "1934"
+          }
+        },
+        "47": {
+          "columns": {
+            "0": "47",
+            "1": "Leningrad Oblast",
+            "2": "Largest city: Gatchina[b]",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Northwestern",
+            "7": "Northwestern",
+            "8": "84,500",
+            "9": "1,669,205",
+            "10": "1927"
+          }
+        },
+        "48": {
+          "columns": {
+            "0": "48",
+            "1": "Lipetsk Oblast",
+            "2": "Lipetsk",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Central",
+            "7": "Central Black Earth",
+            "8": "24,100",
+            "9": "1,213,499",
+            "10": "1954"
+          }
+        },
+        "49": {
+          "columns": {
+            "0": "49",
+            "1": "Magadan Oblast",
+            "2": "Magadan",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Far Eastern",
+            "7": "Far Eastern",
+            "8": "461,400",
+            "9": "182,726",
+            "10": "1953"
+          }
+        },
+        "50": {
+          "columns": {
+            "0": "50",
+            "1": "Moscow Oblast",
+            "2": "Largest city: Balashikha[c]",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Central",
+            "7": "Central",
+            "8": "44,300[18]",
+            "9": "6,618,538",
+            "10": "1929"
+          }
+        },
+        "51": {
+          "columns": {
+            "0": "51",
+            "1": "Murmansk Oblast",
+            "2": "Murmansk",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Northwestern",
+            "7": "Northern",
+            "8": "144,900",
+            "9": "892,534",
+            "10": "1938"
+          }
+        },
+        "52": {
+          "columns": {
+            "0": "52",
+            "1": "Nizhny Novgorod Oblast",
+            "2": "Nizhny Novgorod",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Volga",
+            "7": "Volga-Vyatka",
+            "8": "76,900",
+            "9": "3,524,028",
+            "10": "1936"
+          }
+        },
+        "53": {
+          "columns": {
+            "0": "53",
+            "1": "Novgorod Oblast",
+            "2": "Veliky Novgorod",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Northwestern",
+            "7": "Northwestern",
+            "8": "55,300",
+            "9": "694,355",
+            "10": "1944"
+          }
+        },
+        "54": {
+          "columns": {
+            "0": "54",
+            "1": "Novosibirsk Oblast",
+            "2": "Novosibirsk",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Siberian",
+            "7": "West Siberian",
+            "8": "178,200",
+            "9": "2,692,251",
+            "10": "1937"
+          }
+        },
+        "55": {
+          "columns": {
+            "0": "55",
+            "1": "Omsk Oblast",
+            "2": "Omsk",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Siberian",
+            "7": "West Siberian",
+            "8": "139,700",
+            "9": "2,079,220",
+            "10": "1934"
+          }
+        },
+        "56": {
+          "columns": {
+            "0": "56",
+            "1": "Orenburg Oblast",
+            "2": "Orenburg",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Volga",
+            "7": "Ural",
+            "8": "124,000",
+            "9": "2,179,551",
+            "10": "1934"
+          }
+        },
+        "57": {
+          "columns": {
+            "0": "57",
+            "1": "Oryol Oblast",
+            "2": "Oryol",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Central",
+            "7": "Central",
+            "8": "24,700",
+            "9": "860,262",
+            "10": "1937"
+          }
+        },
+        "58": {
+          "columns": {
+            "0": "58",
+            "1": "Penza Oblast",
+            "2": "Penza",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Volga",
+            "7": "Volga",
+            "8": "43,200",
+            "9": "1,452,941",
+            "10": "1939"
+          }
+        },
+        "59": {
+          "columns": {
+            "0": "59",
+            "1": "Perm Krai",
+            "2": "Perm",
+            "3": "",
+            "4": "",
+            "5": "krai",
+            "6": "Volga",
+            "7": "Ural",
+            "8": "160,600",
+            "9": "2,819,421",
+            "10": "2005"
+          }
+        },
+        "60": {
+          "columns": {
+            "0": "60",
+            "1": "Pskov Oblast",
+            "2": "Pskov",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Northwestern",
+            "7": "Northwestern",
+            "8": "55,300",
+            "9": "760,810",
+            "10": "1944"
+          }
+        },
+        "61": {
+          "columns": {
+            "0": "61",
+            "1": "Rostov Oblast",
+            "2": "Rostov-on-Don",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Southern",
+            "7": "North Caucasus",
+            "8": "100,800",
+            "9": "4,404,013",
+            "10": "1937"
+          }
+        },
+        "62": {
+          "columns": {
+            "0": "62",
+            "1": "Ryazan Oblast",
+            "2": "Ryazan",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Central",
+            "7": "Central",
+            "8": "39,600",
+            "9": "1,227,910",
+            "10": "1937"
+          }
+        },
+        "63": {
+          "columns": {
+            "0": "63",
+            "1": "Samara Oblast",
+            "2": "Samara",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Volga",
+            "7": "Volga",
+            "8": "53,600",
+            "9": "3,239,737",
+            "10": "1928"
+          }
+        },
+        "64": {
+          "columns": {
+            "0": "64",
+            "1": "Saratov Oblast",
+            "2": "Saratov",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Volga",
+            "7": "Volga",
+            "8": "100,200",
+            "9": "2,668,310",
+            "10": "1936"
+          }
+        },
+        "65": {
+          "columns": {
+            "0": "65",
+            "1": "Sakhalin Oblast",
+            "2": "Yuzhno-Sakhalinsk",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Far Eastern",
+            "7": "Far Eastern",
+            "8": "87,100",
+            "9": "546,695",
+            "10": "1947"
+          }
+        },
+        "66": {
+          "columns": {
+            "0": "66",
+            "1": "Sverdlovsk Oblast",
+            "2": "Yekaterinburg",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Ural",
+            "7": "Ural",
+            "8": "194,800",
+            "9": "4,486,214",
+            "10": "1935"
+          }
+        },
+        "67": {
+          "columns": {
+            "0": "67",
+            "1": "Smolensk Oblast",
+            "2": "Smolensk",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Central",
+            "7": "Central",
+            "8": "49,800",
+            "9": "1,049,574",
+            "10": "1937"
+          }
+        },
+        "68": {
+          "columns": {
+            "0": "68",
+            "1": "Tambov Oblast",
+            "2": "Tambov",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Central",
+            "7": "Central Black Earth",
+            "8": "34,300",
+            "9": "1,178,443",
+            "10": "1937"
+          }
+        },
+        "69": {
+          "columns": {
+            "0": "69",
+            "1": "Tver Oblast",
+            "2": "Tver",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Central",
+            "7": "Central",
+            "8": "84,100",
+            "9": "1,471,459",
+            "10": "1935"
+          }
+        },
+        "70": {
+          "columns": {
+            "0": "70",
+            "1": "Tomsk Oblast",
+            "2": "Tomsk",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Siberian",
+            "7": "West Siberian",
+            "8": "316,900",
+            "9": "1,046,039",
+            "10": "1944"
+          }
+        },
+        "71": {
+          "columns": {
+            "0": "71",
+            "1": "Tula Oblast",
+            "2": "Tula",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Central",
+            "7": "Central",
+            "8": "25,700",
+            "9": "1,675,758",
+            "10": "1937"
+          }
+        },
+        "72": {
+          "columns": {
+            "0": "72",
+            "1": "Tyumen Oblast",
+            "2": "Tyumen",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Ural",
+            "7": "West Siberian",
+            "8": "143,520",
+            "9": "3,264,841",
+            "10": "1944"
+          }
+        },
+        "73": {
+          "columns": {
+            "0": "73",
+            "1": "Ulyanovsk Oblast",
+            "2": "Ulyanovsk",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Volga",
+            "7": "Volga",
+            "8": "37,300",
+            "9": "1,382,811",
+            "10": "1943"
+          }
+        },
+        "74": {
+          "columns": {
+            "0": "74",
+            "1": "Chelyabinsk Oblast",
+            "2": "Chelyabinsk",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Ural",
+            "7": "Ural",
+            "8": "87,900",
+            "9": "3,603,339",
+            "10": "1934"
+          }
+        },
+        "75": {
+          "columns": {
+            "0": "75",
+            "1": "Zabaykalsky Krai",
+            "2": "Chita",
+            "3": "",
+            "4": "",
+            "5": "krai",
+            "6": "Far Eastern",
+            "7": "East Siberian",
+            "8": "431,500",
+            "9": "1,155,346",
+            "10": "2008"
+          }
+        },
+        "76": {
+          "columns": {
+            "0": "76",
+            "1": "Yaroslavl Oblast",
+            "2": "Yaroslavl",
+            "3": "",
+            "4": "",
+            "5": "oblast",
+            "6": "Central",
+            "7": "Central",
+            "8": "36,400",
+            "9": "1,367,398",
+            "10": "1936"
+          }
+        },
+        "77": {
+          "columns": {
+            "0": "77",
+            "1": "Moscow",
+            "2": "—",
+            "3": "",
+            "4": "",
+            "5": "federal city",
+            "6": "Central",
+            "7": "Central",
+            "8": "2,511",
+            "9": "10,382,754",
+            "10": ""
+          }
+        },
+        "78": {
+          "columns": {
+            "0": "78",
+            "1": "Saint Petersburg",
+            "2": "—",
+            "3": "",
+            "4": "",
+            "5": "federal city",
+            "6": "Northwestern",
+            "7": "Northwestern",
+            "8": "1,439",
+            "9": "4,662,547",
+            "10": ""
+          }
+        },
+        "79": {
+          "columns": {
+            "0": "79",
+            "1": "Jewish Autonomous Oblast",
+            "2": "Birobidzhan",
+            "3": "",
+            "4": "",
+            "5": "autonomous oblast",
+            "6": "Far Eastern",
+            "7": "Far Eastern",
+            "8": "36,000",
+            "9": "190,915",
+            "10": "1934"
+          }
+        },
+        "80": {
+          "columns": {
+            "0": "80",
+            "1": "Nenets Autonomous Okrug",
+            "2": "Naryan-Mar",
+            "3": "",
+            "4": "",
+            "5": "autonomous okrug",
+            "6": "Northwestern",
+            "7": "Northern",
+            "8": "176,700",
+            "9": "41,546",
+            "10": "1929"
+          }
+        },
+        "81": {
+          "columns": {
+            "0": "81",
+            "1": "Khanty–Mansi Autonomous Okrug – Yugra",
+            "2": "Khanty-Mansiysk(Largest city: Surgut)",
+            "3": "",
+            "4": "",
+            "5": "autonomous okrug",
+            "6": "Ural",
+            "7": "West Siberian",
+            "8": "523,100",
+            "9": "1,432,817",
+            "10": "1930"
+          }
+        },
+        "82": {
+          "columns": {
+            "0": "82",
+            "1": "Chukotka Autonomous Okrug",
+            "2": "Anadyr",
+            "3": "",
+            "4": "",
+            "5": "autonomous okrug",
+            "6": "Far Eastern",
+            "7": "Far Eastern",
+            "8": "737,700",
+            "9": "53,824",
+            "10": "1930"
+          }
+        },
+        "83": {
+          "columns": {
+            "0": "83",
+            "1": "Yamalo-Nenets Autonomous Okrug",
+            "2": "Salekhard(Largest city: Noyabrsk)",
+            "3": "",
+            "4": "",
+            "5": "autonomous okrug",
+            "6": "Ural",
+            "7": "West Siberian",
+            "8": "750,300",
+            "9": "507,006",
+            "10": "1930"
+          }
+        },
+        "84": {
+          "columns": {
+            "0": "84",
+            "1": "Republic of Crimea[d]",
+            "2": "Simferopol",
+            "3": "",
+            "4": "",
+            "5": "republic",
+            "6": "Southern[19][20]",
+            "7": "North Caucasus",
+            "8": "26,964[21]",
+            "9": "1,966,801[22]",
+            "10": "2014"
+          }
+        },
+        "85": {
+          "columns": {
+            "0": "85",
+            "1": "Sevastopol[d]",
+            "2": "—",
+            "3": "",
+            "4": "",
+            "5": "federal city",
+            "6": "Southern[19][20]",
+            "7": "North Caucasus",
+            "8": "864[23]",
+            "9": "379,200[23]",
+            "10": "2014"
+          }
+        }
+      }
+    }
+  ]
+}

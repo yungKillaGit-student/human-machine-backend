@@ -7,6 +7,7 @@ import {
 } from '../../entities';
 
 import {EventController, FileController, UserController, VersionController} from './controllers';
+import {CommonController} from './controllers/common';
 import {DocumentController} from './controllers/document';
 import {Auth} from './middlewares';
 import {
@@ -51,6 +52,7 @@ CrudConfigService.load({
         FileController,
         EventController,
         DocumentController,
+        CommonController,
     ],
 })
 export class ApiModule implements NestModule {
