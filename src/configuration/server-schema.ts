@@ -31,6 +31,7 @@ export interface IConfig {
         defaultLastName: string;
         defaultCountry: string;
         defaultPinCode: string;
+        defaultShortCountry: string;
         cookie: { lifetime: number };
         redirect: { lifetime: number };
     };
@@ -99,6 +100,7 @@ export const schema = {
                 defaultLastName: {type: 'string', allowEmpty: false},
                 defaultCountry: {type: 'string', allowEmpty: false},
                 defaultPinCode: {type: 'string', allowEmpty: false},
+                defaultShortCountry: {type: 'string', allowEmpty: false},
                 cookie: {properties: {lifetime: {type: 'number', allowEmpty: false, required: true}}},
                 redirect: {properties: {lifetime: {type: 'number', allowEmpty: false, required: true}}},
             },

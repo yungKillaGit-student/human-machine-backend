@@ -25,6 +25,7 @@ describe('USER :: BASIC OPERATIONS', () => {
         lastName: 'test-last-name',
         country: 'test-country',
         pinCode: 'test-pin-code',
+        shortCountry: 'ru 72',
     };
     const wrongUser = {
         email: `wrong-${name}@example.com`,
@@ -33,37 +34,25 @@ describe('USER :: BASIC OPERATIONS', () => {
     const userImage = createTestFile('test.png');
 
     it('POST /api/users should return an error for not valid email address', async () => {
-        const {
-            password, firstName, lastName, country, pinCode,
-        } = testUser;
-        const email = 'abc';
-        const {statusCode, payload} = await post('/api/users', {
-            password, email, firstName, lastName, country, repeatedPassword: password, pinCode,
-        }, TestHelper.defaultEmail);
+        const createDto = {...testUser, repeatedPassword: testUser.password};
+        createDto.email = 'abc';
+        const {statusCode, payload} = await post('/api/users', createDto, TestHelper.defaultEmail);
         const {message} = JSON.parse(payload);
         assert.equal(statusCode, HttpStatus.BAD_REQUEST, 'Wrong code');
         assert.equal(message, ErrorMessages.BAD_REQUEST, 'Wrong message');
     });
 
     it('POST /api/users should create a new user', async () => {
-        const {
-            password, email, firstName, lastName, country, pinCode,
-        } = testUser;
-        const {statusCode, payload} = await post('/api/users', {
-            password, email, firstName, lastName, country, repeatedPassword: password, pinCode,
-        }, TestHelper.defaultEmail);
+        const createDto = {...testUser, repeatedPassword: testUser.password};
+        const {statusCode, payload} = await post('/api/users', createDto, TestHelper.defaultEmail);
         const body = JSON.parse(payload);
         assert.equal(statusCode, HttpStatus.CREATED, 'Wrong code');
         assert.containsAllKeys(body, userResponseDtoKeys, 'Response doesn\'t have all the keys');
     });
 
     it('POST /api/users should return an error for already created user', async () => {
-        const {
-            password, email, firstName, lastName, country, pinCode,
-        } = testUser;
-        const {statusCode, payload} = await post('/api/users', {
-            password, email, firstName, lastName, country, repeatedPassword: password, pinCode,
-        }, TestHelper.defaultEmail);
+        const createDto = {...testUser, repeatedPassword: testUser.password};
+        const {statusCode, payload} = await post('/api/users', createDto, TestHelper.defaultEmail);
         const {message} = JSON.parse(payload);
         assert.equal(statusCode, HttpStatus.CONFLICT, 'Wrong code');
         assert.equal(message, ErrorMessages.CONFLICT_OBJECT_ALREADY_EXISTS, 'Wrong message');

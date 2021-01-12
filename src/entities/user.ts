@@ -131,4 +131,20 @@ export class User extends Temporal {
     @ManyToOne(() => File)
     @JoinColumn({name: 'imageId'})
     image: File;
+
+    @Column({
+        type: 'varchar',
+        name: 'shortCountry',
+        nullable: false,
+    })
+    @ApiProperty({description: 'Short Country'})
+    shortCountry: string;
+
+    @Column({
+        type: 'bool',
+        name: 'isConfirmed',
+        nullable: false,
+        default: false,
+    })
+    isConfirmed: boolean;
 }
