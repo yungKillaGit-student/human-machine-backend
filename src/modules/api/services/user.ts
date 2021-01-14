@@ -5,16 +5,18 @@ import {InjectRepository} from '@nestjs/typeorm';
 import {CrudRequest} from '@nestjsx/crud';
 import {plainToClass} from 'class-transformer';
 import {isEmail} from 'class-validator';
-import {sign} from 'jsonwebtoken';
+import {sign, verify} from 'jsonwebtoken';
 import {EntityManager, Repository, Transaction, TransactionManager} from 'typeorm';
 
 import config from '../../../configuration';
 import {User} from '../../../entities';
-import {ErrorUtils, ExceptionBuilder, Logger} from '../../../utils';
+import {ErrorMessages, ErrorUtils, ExceptionBuilder, Logger} from '../../../utils';
 import {UserCreateDto, UserUpdateDto} from '../interfaces';
 
 import {CommonCrudService} from './common-crud';
 import {FileService} from './file';
+import {IMailMessengerOptions, MailMessengerService} from './messenger/mail';
+import {MailMessengerTypes} from './messenger/types';
 
 @Injectable()
 export class UserService extends CommonCrudService<User> {
@@ -23,6 +25,7 @@ export class UserService extends CommonCrudService<User> {
     constructor(
         @InjectRepository(User) repo: Repository<User>,
         private readonly fileService: FileService,
+        private readonly mailMessengerService: MailMessengerService,
     ) {
         super(repo);
     }
@@ -52,6 +55,10 @@ export class UserService extends CommonCrudService<User> {
             savedUser = await manager.save(User, newUser);
         } catch (err) {
             ErrorUtils.handleDBException(err, User.name, newUser);
+        }
+
+        if (config.env !== 'test') {
+            await this.sendWelcomeEmailToUser(createDto.password, savedUser);
         }
 
         const {user} = await this.getUserResponse(savedUser.id, manager);
@@ -92,13 +99,91 @@ export class UserService extends CommonCrudService<User> {
         }
 
         try {
-            await manager.save(User, newUser); // manager.update() will not understand ManyToMany relations and will try to update with nonexistent user_id field
+            await manager.save(User, newUser);
         } catch (err) {
             ErrorUtils.handleDBException(err, User.name, newUser);
         }
 
         const {user: newObject} = await this.getUserResponse(id, manager);
         return {oldObject: plainToClass(User, oldUser), newObject};
+    }
+
+    @Transaction()
+    async verifyUser(
+        id: string,
+        token: string,
+        @TransactionManager() manager?: EntityManager,
+    ): Promise<User> {
+        this.logger.trace(`Verify user with id ${id}`, 'verifyUser');
+
+        const oldUser = await manager.findOne(User, {id});
+        if (!oldUser) {
+            this.logger.debug(`Entry doesn't exist: '${id}'`, 'verifyUser');
+            ErrorUtils.throwHttpException(ExceptionBuilder.OBJECT_NOT_FOUND, {entity: User.name, id});
+        } else if (oldUser.isConfirmed) {
+            this.logger.debug('This user is already confirmed', 'verifyUser');
+            ErrorUtils.throwHttpException(ExceptionBuilder.RESOURCE_IS_NOT_LONGER_AVAILABLE);
+        }
+
+        let decoded;
+        try {
+            decoded = verify(token, config.jwtSecret);
+        } catch (err) {
+            ErrorUtils.throwHttpException(ExceptionBuilder.UNAUTHORIZED);
+        }
+
+        const {id: decodedId, email} = decoded;
+
+        if (decodedId !== id) {
+            this.logger.debug('Decoded id is not equal to id from url', 'verifyUser');
+            ErrorUtils.throwHttpException(ExceptionBuilder.BAD_REQUEST, {
+                entity: User.name,
+                parameters: {decodedId, userId: id},
+            });
+        }
+
+        if (oldUser.email !== email) {
+            this.logger.debug('Decoded email is not equal to user email', 'verifyUser');
+            ErrorUtils.throwHttpException(ExceptionBuilder.BAD_REQUEST, {
+                entity: User.name,
+                parameters: {decodedEmail: email, userEmail: oldUser.email},
+            });
+        } else {
+            const newUser = manager.create(User);
+            Object.entries({...oldUser, isConfirmed: true}).forEach(([k, v]) => newUser[k] = v);
+
+            try {
+                await manager.save(User, newUser);
+            } catch (err) {
+                ErrorUtils.handleDBException(err, User.name, newUser);
+            }
+        }
+
+        const {user: verifiedUser} = await this.getUserResponse(id, manager);
+        return verifiedUser;
+    }
+
+    async sendWelcomeEmailToUser(
+        userPassword: string,
+        user: User,
+    ): Promise<any> {
+        this.logger.trace('Send welcome email to target user', 'sendWelcomeEmailToUser');
+
+        const userName = `${user.firstName} ${user.lastName}`;
+        const mailOptions: IMailMessengerOptions = {
+            confirmToken: this.generateJwt(user),
+            email: user.email,
+            type: MailMessengerTypes.USER_CREATED,
+            userId: user.id,
+            password: userPassword,
+            name: userName,
+        };
+        try {
+            await this.mailMessengerService.send(mailOptions);
+        } catch (err) {
+            this.logger.debug(`Failed attempt to send email to user with id = ${user.id}`, 'sendWelcomeEmailToUser');
+            ErrorUtils.throwHttpException(ExceptionBuilder.FAILED_ATTEMPT_TO_SEND_EMAIL, {userName, userEmail: user.email});
+        }
     }
 
     async getManyUsers(crudReq: CrudRequest) {

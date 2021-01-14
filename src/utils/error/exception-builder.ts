@@ -80,6 +80,11 @@ export const ExceptionBuilder = {
             fields: data.fields,
         }),
     },
+    // 410
+    RESOURCE_IS_NOT_LONGER_AVAILABLE: {
+        message: ErrorMessages.RESOURCE_IS_NOT_LONGER_AVAILABLE,
+        status: HttpStatus.GONE,
+    },
     // 500 INTERNAL SERVER ERROR
     INTERNAL_SERVER_ERROR: {
         message: ErrorMessages.INTERNAL_SERVER_ERROR,
@@ -88,5 +93,20 @@ export const ExceptionBuilder = {
     FILE_COULD_NOT_BE_UPLOADED: {
         message: ErrorMessages.FILE_COULD_NOT_BE_UPLOADED,
         status: HttpStatus.INTERNAL_SERVER_ERROR,
+    },
+    // 502 BAD GATEWAY
+    FAILED_ATTEMPT_TO_SEND_EMAIL: {
+        message: ErrorMessages.FAILED_ATTEMPT_TO_SEND_EMAIL,
+        status: HttpStatus.BAD_GATEWAY,
+        getParameters: data => ({
+            userName: data.userName,
+            userEmail: data.userEmail,
+        }),
+    },
+    // 503 SERVICE_UNAVAILABLE
+    MAILER_SERVICE_UNAVAILABLE: {
+        message: ErrorMessages.SERVICE_UNAVAILABLE_MAILER,
+        status: HttpStatus.SERVICE_UNAVAILABLE,
+        getParameters: data => ({email: data.email}),
     },
 };

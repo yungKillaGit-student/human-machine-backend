@@ -13,7 +13,7 @@ import {Auth} from './middlewares';
 import {
     DocumentService,
     EventService,
-    FileService,
+    FileService, MailMessengerService,
     SessionService,
     UserService,
     VersionService,
@@ -45,6 +45,7 @@ CrudConfigService.load({
         FileService,
         EventService,
         DocumentService,
+        MailMessengerService,
     ],
     controllers: [
         UserController,

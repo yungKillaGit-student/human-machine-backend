@@ -3,7 +3,7 @@
         "host": "127.0.0.1",
         "httpPort": 5000,
         "pathPrefix": "",
-        "url": "http://localhost:9000",
+        "url": "http://localhost:3000",
         "assetsDirectory": "./assets",
         "storageDirectory": "./static",
         "tmpDirectory": "./tmp",

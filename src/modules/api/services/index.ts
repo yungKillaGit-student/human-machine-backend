@@ -6,3 +6,4 @@ export * from './generic';
 export * from './file';
 export * from './event';
 export * from './document';
+export * from './messenger/mail';

@@ -1,5 +1,5 @@
 import {
-    Body, Controller, Get, HttpCode, HttpStatus, Param, Post, Req, Res, UsePipes, ValidationPipe,
+    Body, Controller, Get, HttpCode, HttpStatus, Param, Patch, Post, Query, Req, Res, UsePipes, ValidationPipe,
 } from '@nestjs/common';
 import {ApiCookieAuth, ApiOperation, ApiResponse, ApiTags} from '@nestjs/swagger';
 import {
@@ -58,6 +58,11 @@ export class UserController implements CrudController<User> {
         return user;
     }
 
+    @Patch(':id/verify')
+    async verify(@Param('id') id, @Body('token') token) {
+        return this.service.verifyUser(id, token);
+    }
+
     @ApiOperation({summary: 'Sign out signed in user'})
     @ApiCookieAuth('token')
     @ApiResponse({status: HttpStatus.ACCEPTED, description: 'User is signed out', type: User})
@@ -103,7 +108,7 @@ export class UserController implements CrudController<User> {
     }
 
     @Override('getOneBase')
-    async getById(@Param('id') id, @Req() req): Promise<User | void> {
+    async getById(@Param('id') id): Promise<User | void> {
         const {user} = await this.service.getUserResponse(id);
         return user;
     }
